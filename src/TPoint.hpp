@@ -2,7 +2,7 @@
 #define _TPOINT_HPP
 
 #include <utility>
-
+#include <iostream>
 template <typename T>
 class TPoint
 {
@@ -25,7 +25,7 @@ public:
      * @brief Construct a new Point object
      *
      */
-    Point(void);
+    TPoint(void);
 
     /**
      * @brief Construct a new Point object
@@ -33,14 +33,14 @@ public:
      * @param abscisse Valeur de l'abscisse
      * @param ordonnee Valeur de l'ordonnee
      */
-    Point(T abscisse, T ordonnee);
+    TPoint(T abscisse, T ordonnee);
 
     /**
      * @brief Construct a new Point object
      * 
      * @param p Point à recopier
      */
-    Point(const TPoint& p);
+    TPoint(const TPoint& p);
 
     /**
      * @brief Translate le point
@@ -79,7 +79,13 @@ public:
      * @brief Destroy the Point object
      *
      */
-    ~Point(void);
+    ~TPoint(void);
+
+    friend std::ostream &operator<< (std::ostream &s, TPoint const &point);
+
 };
+
+// std::ostream &operator<< (std::ostream &s, TPoint const &point);
+
 
 #endif

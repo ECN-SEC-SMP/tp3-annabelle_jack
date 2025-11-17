@@ -20,10 +20,10 @@ public:
         this->centre = point;
     }
 
-    // Methods virtuals //
-    virtual T perimetre(void);
+    // Methods pure virtuals //
+    virtual T perimetre(void)=0;
 
-    virtual T surface(void);
+    virtual T surface(void)=0;
 
     // Affichage //
     friend std::ostream &operator<<(std::ostream &s, TForme const &centre)

@@ -3,89 +3,48 @@
 
 #include <utility>
 #include <iostream>
+
 template <typename T>
 class TPoint
 {
-
 private:
-    /**
-     * @brief Abscisse du point
-     *
-     */
     T abscisse;
-
-    /**
-     * @brief Ordonnee du point
-     *
-     */
     T ordonnee;
 
 public:
-    /**
-     * @brief Construct a new Point object
-     *
-     */
-    TPoint(void);
+    // Constructeur par défaut
+    TPoint() : abscisse(0), ordonnee(0) {}
 
-    /**
-     * @brief Construct a new Point object
-     *
-     * @param abscisse Valeur de l'abscisse
-     * @param ordonnee Valeur de l'ordonnee
-     */
-    TPoint(T abscisse, T ordonnee);
+    // Constructeur avec paramètres
+    TPoint(T x, T y) : abscisse(x), ordonnee(y) {}
 
-    /**
-     * @brief Construct a new Point object
-     * 
-     * @param p Point à recopier
-     */
-    TPoint(const TPoint& p);
+    // Constructeur de copie
+    TPoint(const TPoint& p) : abscisse(p.abscisse), ordonnee(p.ordonnee) {}
 
-    /**
-     * @brief Translate le point
-     *
-     * @param cordonnees Les nouvelles coordonnées
-     */
-    void translate(std::pair<T, T> cordonnees);
+    // Translate le point
+    void translate(std::pair<T, T> cordonnees)
+    {
+        abscisse += cordonnees.first;
+        ordonnee += cordonnees.second;
+    }
 
-    /**
-     * @brief Get the Abscisse object
-     *
-     * @return T
-     */
-    T getAbscisse(void);
+    // Accesseurs
+    T getAbscisse() const { return abscisse; }
+    T getOrdonnee() const { return ordonnee; }
 
-    /**
-     * @brief Get the Ordonnee object
-     *
-     * @return T
-     */
-    T getOrdonnee(void);
+    // Mutateurs
+    void setAbscisse(T x) { abscisse = x; }
+    void setOrdonnee(T y) { ordonnee = y; }
 
-    /**
-     * @brief Set the Abscisse object
-     * @param abscisse Valeur de l'abscisse
-     */
-    void setAbscisse(T abscisse);
+    // Destructeur
+    ~TPoint() {}
 
-    /**
-     * @brief Set the Ordonnee object
-     * @param ordonnee Valeur de l'ordonnee
-     */
-    void setOrdonnee(T ordonnee);
-
-    /**
-     * @brief Destroy the Point object
-     *
-     */
-    ~TPoint(void);
-
-    friend std::ostream &operator<< (std::ostream &s, TPoint const &point);
-
+    // Affichage
+    friend std::ostream &operator<<(std::ostream &s, const TPoint &point)
+    {
+        s << "(" << point.abscisse << ", " << point.ordonnee << ")";
+        return s;
+    }
 };
-
-// std::ostream &operator<< (std::ostream &s, TPoint const &point);
-
 
 #endif

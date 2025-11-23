@@ -1,22 +1,23 @@
-#ifndef _TPCARRE_HPP
-#define _TPCARRE_HPP
+#ifndef _TCARRE_HPP
+#define _TCARRE_HPP
 
 #include "TRectangle.hpp"
 
 template <typename T>
-class TCarre : public TRectangle
+class TCarre : public TRectangle<T>
 {
-private:
-    T lenght;
 public:
-     T surface() override {
-        return lenght*lenght;
-    }
+    // Constructeur : un carré est un rectangle avec largeur = hauteur
+    TCarre(const TPoint<T>& centre, T cote)
+        : TRectangle<T>(centre, cote, cote) {}
 
-    T perimetre () override {
-        return lenght*4;
+    // Affichage
+    friend std::ostream& operator<<(std::ostream &s, const TCarre<T>& c)
+    {
+        s << "Carré - Centre: " << c.centre
+          << " | Côté: " << c.largeur;
+        return s;
     }
-
 };
 
 #endif

@@ -2,22 +2,42 @@
 #define _TRECTANGLE_HPP
 
 #include "TForme.hpp"
+#include <iostream>
 
 template <typename T>
-class TRectangle : public TForme
+class TRectangle : public TForme<T>
 {
-
-private :
-    T lenght;
+protected:
     T largeur;
+    T hauteur;
 
-public : 
-    T surface() override {
-        return lenght*largeur;
+public:
+    // Constructeur
+    TRectangle(const TPoint<T>& centre, T largeur, T hauteur)
+        : TForme<T>(centre), largeur(largeur), hauteur(hauteur) {}
+
+    // Accesseurs
+    T getLargeur() const { return largeur; }
+    T getHauteur() const { return hauteur; }
+
+    // Implémentation des méthodes abstraites
+    T perimetre() const override
+    {
+        return 2 * (largeur + hauteur);
     }
 
-    T perimetre () override {
-        return lenght*2 + largeur*2
+    T surface() const override
+    {
+        return largeur * hauteur;
+    }
+
+    // Affichage
+    friend std::ostream& operator<<(std::ostream &s, const TRectangle<T>& r)
+    {
+        s << "Rectangle - Centre: " << r.centre
+          << " | Largeur: " << r.largeur
+          << " | Hauteur: " << r.hauteur;
+        return s;
     }
 };
 

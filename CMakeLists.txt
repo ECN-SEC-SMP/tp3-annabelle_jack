@@ -9,7 +9,12 @@ file(MAKE_DIRECTORY output) # Create directory for outputs
 
 set(sources
     ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/Point.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/TPoint.hpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/TForme.hpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/TRectangle.hpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/TCarre.hpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/ListeFormes.hpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/TPointSpecialisation.cpp
 )
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})

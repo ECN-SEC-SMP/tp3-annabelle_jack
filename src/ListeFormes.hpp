@@ -10,16 +10,29 @@ template <typename T>
 class ListeFormes
 {
 private:
+/**
+ * @brief Vecteur de TForme<T>
+ * 
+ */
     std::vector<TForme<T> *> formes;
 
 public:
-    // Ajouter une forme
+    
+    /**
+     * @brief Ajoute une TForme au vecteur
+     * 
+     * @param f La forme
+     */
     void ajouter(TForme<T> *f)
     {
         formes.push_back(f);
     }
 
-    // Surface totale
+    /**
+     * @brief Calcule la surface totale des formes dans le vecteur
+     * 
+     * @return T 
+     */
     T surfaceTotale() const
     {
         T surface = 0;
@@ -28,7 +41,11 @@ public:
         return surface;
     }
 
-    // Boîte englobante : retourne un TRectangle<T>
+    /**
+     * @brief Calcule la taille minimale de la boite englobante
+     * 
+     * @return TRectangle<T> 
+     */
     TRectangle<T> boiteEnglobante() const
     {
         if (formes.empty())

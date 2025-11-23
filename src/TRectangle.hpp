@@ -8,31 +8,76 @@ template <typename T>
 class TRectangle : public TForme<T>
 {
 protected:
+    /**
+     * @brief Largeur du rectangle
+     *
+     */
     T largeur;
+    /**
+     * @brief Hauteur du rectangle
+     *
+     */
     T hauteur;
 
 public:
-    // Constructeur
-    TRectangle(const TPoint<T>& centre, T largeur, T hauteur)
+    /**
+     * @brief Construct a new TRectangle object
+     *
+     * @param centre Centre du rectangle
+     * @param largeur Largeur du rectangle
+     * @param hauteur Hauteur du rectangle
+     */
+    TRectangle(const TPoint<T> &centre, T largeur, T hauteur)
         : TForme<T>(centre), largeur(largeur), hauteur(hauteur) {}
 
-    // Accesseurs
-    T getLargeur() const { return largeur; }
-    T getHauteur() const { return hauteur; }
+    /**
+     * @brief Get the Largeur object
+     *
+     * @return T
+     */
+    T getLargeur() const
+    {
+        return largeur;
+    }
 
-    // Implémentation des méthodes abstraites
+    /**
+     * @brief Get the Hauteur object
+     *
+     * @return T
+     */
+    T getHauteur() const
+    {
+        return hauteur;
+    }
+
+    /**
+     * @brief Calcule le périmètre du rectangkle
+     *
+     * @return T
+     */
     T perimetre() const override
     {
         return 2 * (largeur + hauteur);
     }
 
+    /**
+     * @brief Calcule la surface du rectangle
+     *
+     * @return T
+     */
     T surface() const override
     {
         return largeur * hauteur;
     }
 
-    // Affichage
-    friend std::ostream& operator<<(std::ostream &s, const TRectangle<T>& r)
+    /**
+     * @brief Surchage de l'opérateur d'affichage
+     *
+     * @param s outputstream
+     * @param r Retangle à afficher
+     * @return std::ostream&
+     */
+    friend std::ostream &operator<<(std::ostream &s, const TRectangle<T> &r)
     {
         s << "Rectangle - Centre: " << r.centre
           << " | Largeur: " << r.largeur

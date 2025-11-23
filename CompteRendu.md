@@ -5,7 +5,7 @@
 Manipulation de classes templates avec héritage et surcharge d'opérateurs.
 
 ## Diagramme de classes
-![Diagramme de classes](image.png)
+![alt text](image-1.png)
 
 
 ### Classe TPoint<T>
@@ -20,5 +20,10 @@ Classes filles de `TForme<T>` qui implémentent `surface()` et `perimetre()` :
 - **TCarre** : côté²
 
 ### Spécialisation
+Spécialisation de `TPoint<std::string>` : la méthode `translate()` est redéfinie pour utiliser `std::swap` au lieu de l'addition, permettant d'échanger les coordonnées plutôt que de les additionner.
 
 ### Liste de formes 
+Classe template contenant un vecteur de pointeurs vers `TForme<T>`. Méthodes :
+- `ajouter()` : ajoute une forme à la liste
+- `surfaceTotale()` : calcule la somme des surfaces
+- `boiteEnglobante()` : retourne un rectangle englobant toutes les formes 
